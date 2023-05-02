@@ -43,6 +43,69 @@ module.exports = {
             res.status(500).json(err);
         }
         },
+    // update thought by id
+    async updateThought({ params, body}, res) {
+        try {
+            const updatedThought = await Thought.findOneAndUpdate(
+                { _id: params.id },
+                body,
+                { new: true, runValidators: true }
+            );
+            if (!updatedThought) {
+                res.status(404).json({ message: 'No thought found with this id!'});
+                return;
+            }
+            res.json(updatedThought);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+    // delete thought
+    async deleteThought({ params }, res) {  
+        try {
+            const deletedThought = await Thought.findOneAndDelete({ _id: params.id });
+            if (!deletedThought) {
+                res.status(404).json({ message: 'No thought found with this id!'});
+                return;
+            }
+            res.json(deletedThought);
+        } catch (err) {
+            res.status(500).json(err);
+        }     
+    },
+    // add reaction
+    async addReaction({ params, body}, res) {
+        try {
+            const updatedThought = await Thought.findOneAndUpdate(
+                { _id: params.id},
+                { $push: {reactions: body } },
+                { new: true, runValidators: true },
+            );
+            if (!updatedThought) {
+                res.status(404).json({ message: 'No thought found with this id!'});
+                return;
+            }
+            res.json(updatedThought);
+        } catch (err) {
+            res.status(500).json(err);       
+        }
+    },
+    // delete reaction
+    async deleteReaction({ params}, res) {
+        try {
+            const updatedThought = await Thought.findOneAndUpdate(
+                { _id: params.id },
+                { $pull: { reactions: { reactionId: params.reactionId} } },
+                { new: true, runValidators: true },
+            );
+            if (!updatedThought) {
+                res.status(404).json({ message: 'No thought found with this id!'});
+                return;
+            }
+            res.json(updatedThought);
+        } catch (err) {
+            res.status(500).json(err);
+        }   
     }
-    
-}
+};
+
