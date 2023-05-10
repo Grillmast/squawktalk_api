@@ -7,7 +7,7 @@ Mongoose: An Object Data Modeling (ODM) library for MongoDB and Node.js, used fo
 MongoDB: A NoSQL database used to store user data, thoughts, and friend relationships.
 Insomnia: A REST API client used for testing and interacting with the API endpoints.
 
-##Functionality
+## Functionality
 The Squawktalk_api backend provides the following functionality:
 
 User Management: Users can be created, updated, and deleted. Each user has a username, email, thoughts (array of their thoughts), and friends (array of their friends).
