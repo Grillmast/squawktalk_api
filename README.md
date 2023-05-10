@@ -3,8 +3,11 @@ Squawktalk_api is a backend API built using Express.js and Mongoose packages. Th
 
 ## Technologies Used
 Express.js: A web application framework for Node.js, used for routing and handling HTTP requests.
+
 Mongoose: An Object Data Modeling (ODM) library for MongoDB and Node.js, used for data modeling and interacting with the MongoDB database.
+
 MongoDB: A NoSQL database used to store user data, thoughts, and friend relationships.
+
 Insomnia: A REST API client used for testing and interacting with the API endpoints.
 
 ## Functionality
